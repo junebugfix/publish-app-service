@@ -1,6 +1,6 @@
-const core = require("@actions/core");
-const { promisify } = require("util");
-const { exec } = require("child_process");
+const core = require('@actions/core');
+const { promisify } = require('util');
+const { exec } = require('child_process');
 const execAsync = promisify(exec);
 
 async function run() {
@@ -16,11 +16,10 @@ async function run() {
 }
 
 function loadConfig() {
-    const appName = core.getInput("app-name");
+    const appName = core.getInput('app-name');
     if (!appName) {
-        throw new Error("App name is missing");
+        throw new Error('App name is missing');
     }
-    console.log(`App name: ${appName}`)
 
     return { appName };
 }
@@ -38,8 +37,13 @@ async function checkAzureCliIsAvailable() {
     await execCommand('az --version', 'Unable to find Azure CLI')
 }
 
+async function configureAppSettings(config) {
+    console.log('Configuring app settings...')
+    console.log(`Config: ${config}`);
+}
+
 async function deploy(sourcePath, config) {
-    console.log("Deploying the application...");
+    console.log('Deploying the application...');
     console.log(sourcePath);
     console.log(config);
 }
