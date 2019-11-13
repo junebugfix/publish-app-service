@@ -1,0 +1,24 @@
+{
+  "name": "publish-app-service",
+  "version": "1.0.0",
+  "description": "A github action that publishes a NodeJS app to Azure App Service",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hankhester/publish-app-service.git"
+  },
+  "keywords": [],
+  "author": "Hank Hester",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hankhester/publish-app-service/issues"
+  },
+  "homepage": "https://github.com/hankhester/publish-app-service#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^1.1.0"
+  }
+}

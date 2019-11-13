@@ -1,0 +1,12 @@
+name: 'Deploy to Azure App Service'
+description: 'Deploys app to Azure App Service'
+inputs:
+  configuration:
+    description: 'Configuration'
+    required: true
+  app-settings:
+    description: "JSON containing key value pairs of any app settings (environment variables) to configure in the app. (Must already be in github secrets)"
+    required: false
+runs:
+  using: 'node12'
+  main: 'index.js'
