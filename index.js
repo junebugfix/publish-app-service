@@ -16,30 +16,36 @@ async function run() {
 }
 
 function loadConfig() {
-    const appName = core.getInput('app-name');
-    if (!appName) {
-        throw new Error('App name is missing');
-    }
-
-    return { appName };
+    const appName = getConfigItem('app-name');
+    const secrets = getConfigItem('secrets');
+    return { appName, secrets };
 }
 
-async function execCommand(command, errorMessage) {
+function getConfigItem(key) {
+    const item = core.getInput(key);
+    if (!item) {
+        throw new Error(`Config item '${key}' is missing.`)
+    }
+    return item;
+}
+
+async function execCommand(command, description) {
     try {
         await execAsync(command);
     } catch (error) {
-        console.log(errorMessage);
+        console.log(`Command failed: ${description} (${command})`);
         throw error;
     }
 }
 
 async function checkAzureCliIsAvailable() {
-    await execCommand('az --version', 'Unable to find Azure CLI')
+    await execCommand('az --version', 'Find Azure CLI');
 }
 
 async function configureAppSettings(config) {
-    console.log('Configuring app settings...')
-    console.log(`Config: ${config}`);
+    console.log('Configuring app settings...');
+    console.log('Config:');
+    console.log(config);
 }
 
 async function deploy(sourcePath, config) {
