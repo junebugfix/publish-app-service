@@ -17,7 +17,7 @@ async function run() {
 
 function loadConfig() {
     const appName = getConfigItem('app-name');
-    const secrets = getConfigItem('secrets');
+    const secrets = getConfigItem('secrets').split(' ');
     return { appName, secrets };
 }
 
