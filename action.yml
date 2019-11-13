@@ -1,8 +1,8 @@
 name: 'Deploy to Azure App Service'
 description: 'Deploys app to Azure App Service'
 inputs:
-  configuration:
-    description: 'Configuration'
+  app-name:
+    description: 'App name'
     required: true
   app-settings:
     description: "JSON containing key value pairs of any app settings (environment variables) to configure in the app. (Must already be in github secrets)"

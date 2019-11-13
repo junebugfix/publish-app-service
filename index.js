@@ -16,15 +16,13 @@ async function run() {
 }
 
 function loadConfig() {
-    const configString = core.getInput("configuration");
-    if (!configString) {
-        throw new Error("Configuration is missing");
+    const appName = core.getInput("app-name");
+    if (!appName) {
+        throw new Error("App name is missing");
     }
-    const config = JSON.parse(configString);
+    console.log(`App name: ${appName}`)
 
-    // TODO: validate config has right properties
-
-    return config;
+    return { appName };
 }
 
 async function execCommand(command, errorMessage) {
